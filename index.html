@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Registration Form</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="bg-gif"></div>
+  <div class="bg-overlay"></div>
+  
+  <!-- Animated particles -->
+  <div class="particles" id="particles"></div>
+
+  <!-- Custom Alert -->
+  <div class="custom-alert" id="customAlert"></div>
+
+  <!-- Java Notification -->
+  <div class="notification-overlay" id="notificationOverlay"></div>
+  <div class="java-notification" id="javaNotification">
+    <div class="notification-icon">
+      <i class="fas fa-check-circle"></i>
+    </div>
+    <div class="notification-title">Account Created Successfully!</div>
+    <div class="notification-message">
+      Welcome to Portal Quests! Your account has been successfully created.<br>
+      Check your email for verification and get ready for your adventure!
+    </div>
+    <button class="notification-btn" id="notificationClose">
+      <i class="fas fa-check me-2"></i>Continue to Portal
+    </button>
+  </div>
+
+  <div class="main-container">
+    <div class="form-wrapper">
+      <div class="form-subtitle">portal quests | A 2d adventure game</div>
+      <div class="form-title">Create Your Account</div>
+      
+      <form id="regForm">
+        <div class="row">
+          <div class="col-md-6">
+            <label class="field-label">First Name</label>
+            <div class="input-box">
+              <i class="fas fa-signature"></i>
+              <input type="text" class="form-control" placeholder="Ariane" required>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label class="field-label">Last Name</label>
+            <div class="input-box">
+              <i class="fas fa-user-friends"></i>
+              <input type="text" class="form-control" placeholder="Rosario" required>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label class="field-label">Username</label>
+            <div class="input-box">
+              <i class="fas fa-id-badge"></i>
+              <input type="text" class="form-control" placeholder="ariane_joy6" required>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label class="field-label">Email Address</label>
+            <div class="input-box">
+              <i class="fas fa-envelope-open-text"></i>
+              <input type="email" class="form-control" placeholder="ariane@example.com" required>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label class="field-label">Gender</label>
+            <div class="input-box">
+              <i class="fas fa-venus-mars"></i>
+              <select class="form-select">
+                <option value="" selected disabled>Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label class="field-label">Date of Birth</label>
+            <div class="input-box">
+              <i class="fas fa-calendar-day"></i>
+              <input type="date" class="form-control">
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label class="field-label">Password</label>
+            <div class="input-box">
+              <i class="fas fa-key"></i>
+              <input type="password" class="form-control" placeholder="••••••••" id="pass" required>
+              <div class="password-strength">
+                <div class="strength-bar" id="strengthBar"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label class="field-label">Confirm Password</label>
+            <div class="input-box">
+              <i class="fas fa-lock"></i>
+              <input type="password" class="form-control" placeholder="••••••••" id="cpass" required>
+            </div>
+          </div>
+
+          <div class="col-12 d-flex flex-wrap justify-content-center gap-4 mt-3">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="terms" required>
+              <label class="form-check-label" for="terms">I agree with terms & conditions</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="news">
+              <label class="form-check-label" for="news">Subscribe to Portal Quests</label>
+            </div>
+          </div>
+
+          <div class="col-12 d-grid">
+            <button type="submit" class="btn btn-submit">
+              <i class="fas fa-rocket me-2"></i>Sign-in
+            </button>
+          </div>
+        </div>
+      </form>
+
+      <div class="footer-text">
+        Already have an account? <a href="#" class="login-link">Log-in</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Create animated particles
+    function createParticles() {
+      const particlesContainer = document.getElementById('particles');
+      const particleCount = 25;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        
+        // Random size and position
+        const size = Math.random() * 6 + 2;
+        const posX = Math.random() * 100;
+        const posY = Math.random() * 100;
+        const delay = Math.random() * 20;
+        const duration = 20 + Math.random() * 15;
+        
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.left = `${posX}%`;
+        particle.style.top = `${posY}%`;
+        particle.style.animationDelay = `${delay}s`;
+        particle.style.animationDuration = `${duration}s`;
+        
+        // Random gradient color
+        const colors = [
+          'radial-gradient(circle, rgba(157,80,187,0.6) 0%, transparent 70%)',
+          'radial-gradient(circle, rgba(0,255,255,0.6) 0%, transparent 70%)',
+          'radial-gradient(circle, rgba(255,0,255,0.5) 0%, transparent 70%)',
+          'radial-gradient(circle, rgba(110,72,170,0.6) 0%, transparent 70%)'
+        ];
+        particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+        
+        particlesContainer.appendChild(particle);
+      }
+    }
+    
+    // Show custom alert
+    function showAlert(message, type) {
+      const alert = document.getElementById('customAlert');
+      alert.textContent = message;
+      alert.className = `custom-alert alert-${type} alert-show`;
+      
+      setTimeout(() => {
+        alert.classList.remove('alert-show');
+      }, 4000);
+    }
+    
+    // Password strength indicator
+    function checkPasswordStrength(password) {
+      let strength = 0;
+      const bar = document.getElementById('strengthBar');
+      
+      if (password.length >= 8) strength += 25;
+      if (/[A-Z]/.test(password)) strength += 25;
+      if (/[0-9]/.test(password)) strength += 25;
+      if (/[^A-Za-z0-9]/.test(password)) strength += 25;
+      
+      // Update strength bar
+      bar.style.width = `${strength}%`;
+      
+      // Change gradient color based on strength
+      if (strength < 50) {
+        bar.style.background = 'linear-gradient(90deg, #ff5555, #ff8888)';
+      } else if (strength < 75) {
+        bar.style.background = 'linear-gradient(90deg, #ffaa00, #ffcc44)';
+      } else {
+        bar.style.background = 'linear-gradient(90deg, #00ff88, #44ffaa)';
+      }
+    }
+    
+    // Show Java Notification
+    function showJavaNotification() {
+      const notification = document.getElementById('javaNotification');
+      const overlay = document.getElementById('notificationOverlay');
+      
+      // Show overlay and notification
+      overlay.classList.add('show');
+      setTimeout(() => {
+        notification.classList.add('show');
+      }, 50);
+    }
+    
+    // Close Java Notification
+    function closeJavaNotification() {
+      const notification = document.getElementById('javaNotification');
+      const overlay = document.getElementById('notificationOverlay');
+      
+      // Hide notification and overlay
+      notification.classList.remove('show');
+      setTimeout(() => {
+        overlay.classList.remove('show');
+      }, 300);
+    }
+    
+    // Form validation
+    document.getElementById('regForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const p1 = document.getElementById('pass').value;
+      const p2 = document.getElementById('cpass').value;
+      const terms = document.getElementById('terms').checked;
+      
+      if (!terms) {
+        showAlert('Please agree to the terms & conditions', 'error');
+        return;
+      }
+      
+      if(p1 !== p2) {
+        showAlert("Passwords don't match! Please check again.", 'error');
+      } else {
+        // Add some animation to the button
+        const submitBtn = document.querySelector('.btn-submit');
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Creating Account...';
+        submitBtn.disabled = true;
+        
+        // Simulate processing
+        setTimeout(() => {
+          // Show the beautiful Java notification
+          showJavaNotification();
+          
+          submitBtn.innerHTML = '<i class="fas fa-check me-2"></i>Account Created!';
+          
+          // Reset form after successful registration
+          setTimeout(() => {
+            document.getElementById('regForm').reset();
+            document.getElementById('strengthBar').style.width = '0%';
+            submitBtn.innerHTML = '<i class="fas fa-rocket me-2"></i>Sign-in';
+            submitBtn.disabled = false;
+          }, 2000);
+        }, 1500);
+      }
+    });
+    
+    // Password strength real-time check
+    document.getElementById('pass').addEventListener('input', function() {
+      checkPasswordStrength(this.value);
+    });
+    
+    // Add neon glow effect on focus
+    const inputs = document.querySelectorAll('.form-control, .form-select');
+    inputs.forEach(input => {
+      input.addEventListener('focus', function() {
+        this.parentElement.querySelector('i').style.color = '#00ffff';
+        this.parentElement.querySelector('i').style.textShadow = '0 0 15px rgba(0, 255, 255, 0.8)';
+      });
+      
+      input.addEventListener('blur', function() {
+        this.parentElement.querySelector('i').style.color = '#9d50bb';
+        this.parentElement.querySelector('i').style.textShadow = '0 0 10px rgba(157, 80, 187, 0.8)';
+      });
+    });
+    
+    // Close notification when button is clicked
+    document.getElementById('notificationClose').addEventListener('click', closeJavaNotification);
+    
+    // Close notification when clicking outside
+    document.getElementById('notificationOverlay').addEventListener('click', closeJavaNotification);
+    
+    // Initialize particles on load
+    window.addEventListener('load', function() {
+      createParticles();
+      
+      // Set today as max date for date of birth
+      const today = new Date().toISOString().split('T')[0];
+      document.querySelector('input[type="date"]').setAttribute('max', today);
+      
+      // Add current year as placeholder
+      const year = new Date().getFullYear() - 18;
+      document.querySelector('input[type="date"]').setAttribute('placeholder', `${year}-01-01`);
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,325 @@
+   :root {
+      --glass-bg: rgba(255, 255, 255, 0.1); 
+      --input-bg: rgba(255, 255, 255, 0.95);
+      --neon-purple: #9d50bb;
+    }
+
+    /* 1. Ensure the body and html take up the full screen height */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* --- Background Layer --- */
+    .bg-gif {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('214388.gif') no-repeat center center fixed;
+      background-size: cover;
+      z-index: -2;
+    }
+
+    .bg-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(18, 5, 41, 0.4); 
+      z-index: -1;
+    }
+
+    /* 2. THE FIX: Using Flexbox to center the child perfectly */
+    .main-container {
+      min-height: 100vh;
+      width: 100%;
+      display: flex;
+      align-items: center;      /* Vertical centering */
+      justify-content: center;   /* Horizontal centering */
+      padding: 20px;             /* Prevents form touching edges on mobile */
+    }
+
+    .form-wrapper {
+      background: var(--glass-bg);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 35px;
+      padding: 45px;
+      max-width: 850px;
+      width: 100%;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+      /* This ensures the form doesn't float to one side within the flex-box */
+      margin: auto; 
+    }
+
+    .form-subtitle {
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 3px;
+      color: rgba(255, 255, 255, 0.6);
+      text-align: center;
+      margin-bottom: 5px;
+    }
+
+    .form-title {
+      font-size: 34px;
+      font-weight: 800;
+      color: #ffffff;
+      text-align: center;
+      margin-bottom: 35px;
+      text-shadow: 0 0 15px rgba(157, 80, 187, 0.5);
+    }
+
+    .field-label {
+      font-weight: 600;
+      font-size: 13px;
+      color: #ffffff;
+      margin-bottom: 6px;
+      margin-left: 15px;
+    }
+
+    .input-box {
+      position: relative;
+      margin-bottom: 22px;
+    }
+
+    .input-box i {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #6e48aa;
+      z-index: 5;
+    }
+
+    .form-control, .form-select {
+      background: var(--input-bg);
+      border: 2px solid transparent;
+      border-radius: 50px;
+      padding: 12px 20px 12px 50px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: 0.3s ease;
+    }
+
+    .form-control:focus {
+      border-color: var(--neon-purple);
+      box-shadow: 0 0 20px rgba(157, 80, 187, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .btn-submit {
+      background: linear-gradient(45deg, #9d50bb, #6e48aa);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 14px;
+      font-size: 18px;
+      font-weight: 700;
+      margin-top: 20px;
+      transition: 0.4s;
+      box-shadow: 0 10px 30px rgba(110, 72, 170, 0.4);
+    }
+
+    .btn-submit:hover {
+      transform: scale(1.02);
+      box-shadow: 0 15px 40px rgba(157, 80, 187, 0.6);
+    }
+
+    .footer-text {
+      text-align: center;
+      margin-top: 25px;
+      color: #fff;
+      font-size: 14px;
+    }
+
+    .login-link {
+      color: #d8b4fe;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .form-check-label { color: #fff; font-size: 13px; }
+
+    /* Custom Alert */
+    .custom-alert {
+      position: fixed;
+      top: 30px;
+      right: 30px;
+      padding: 18px 25px;
+      border-radius: 15px;
+      color: white;
+      font-weight: 600;
+      z-index: 1000;
+      opacity: 0;
+      transform: translateX(100%);
+      transition: all 0.5s ease;
+      max-width: 400px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      background: rgba(0, 0, 0, 0.7);
+      border-left: 5px solid;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .alert-success {
+      border-left-color: #00ff88;
+      border-bottom: 2px solid #00ff88;
+    }
+
+    .alert-error {
+      border-left-color: #ff5555;
+      border-bottom: 2px solid #ff5555;
+    }
+
+    .alert-show {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* Java Notification */
+    .java-notification {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      background: linear-gradient(135deg, rgba(20, 10, 40, 0.95), rgba(30, 15, 60, 0.95));
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 2px solid rgba(157, 80, 187, 0.5);
+      border-radius: 20px;
+      padding: 40px;
+      z-index: 9999;
+      text-align: center;
+      box-shadow: 
+        0 0 50px rgba(157, 80, 187, 0.7),
+        0 0 100px rgba(157, 80, 187, 0.4),
+        inset 0 0 20px rgba(255, 255, 255, 0.1);
+      width: 90%;
+      max-width: 500px;
+      transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      opacity: 0;
+    }
+
+    .java-notification.show {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+
+    .notification-icon {
+      font-size: 60px;
+      color: #9d50bb;
+      margin-bottom: 20px;
+      text-shadow: 0 0 20px rgba(157, 80, 187, 0.8);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    .notification-title {
+      font-size: 28px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 15px;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      background: linear-gradient(45deg, #fff, #d8b4fe, #9d50bb);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .notification-message {
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 25px;
+      line-height: 1.6;
+    }
+
+    .notification-btn {
+      background: linear-gradient(45deg, #9d50bb, #6e48aa);
+      border: none;
+      border-radius: 50px;
+      color: white;
+      padding: 12px 35px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 25px rgba(157, 80, 187, 0.5);
+    }
+
+    .notification-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(157, 80, 187, 0.7);
+    }
+
+    .notification-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px);
+      z-index: 9998;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      pointer-events: none;
+    }
+
+    .notification-overlay.show {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    /* Animated particles */
+    .particles {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      animation: float 20s infinite linear;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) translateX(0); }
+      25% { transform: translateY(-100px) translateX(100px); }
+      50% { transform: translateY(-200px) translateX(0); }
+      75% { transform: translateY(-100px) translateX(-100px); }
+      100% { transform: translateY(0) translateX(0); }
+    }
+
+    /* Password strength */
+    .password-strength {
+      height: 4px;
+      margin-top: 5px;
+      border-radius: 2px;
+      background: rgba(255, 255, 255, 0.1);
+      overflow: hidden;
+    }
+
+    .strength-bar {
+      height: 100%;
+      width: 0%;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
